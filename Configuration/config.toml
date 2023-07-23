@@ -1,0 +1,9 @@
+token = "deeznuts29321ddf"
+target = 'me@test.com'
+interval = 86400000
+
+[mail]
+email = 'test@test.com'
+password = "true"
+server = "smtp.microsoft365.com"
+port = 959

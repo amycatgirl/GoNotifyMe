@@ -1,0 +1,9 @@
+token = "goMarketSpreeTokenHere"
+target = 'me@test.com'
+interval = 86400000
+
+[mail]
+email = 'bot@test.com'
+password = "emailPassword"
+server = "smtp.somemailserver.com"
+port = 999

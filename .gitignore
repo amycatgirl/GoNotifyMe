@@ -362,5 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-Configuration/config.toml
+# Configuration File to avoid token leakage
 /Configuration/config.toml

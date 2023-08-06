@@ -4,12 +4,18 @@ namespace GoNotifyMe.Classes
 {
     public class ProductAttribute
     {
-        public int id { get; set; }
-        public string? name { get; set; }
-        public string? presentation { get; set; }
-        public string? option_type_name { get; set; }
-        public int option_type_id { get; set; }
-        public string? option_type_presentation { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public int Id { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string? Name { get; set; }
+        [JsonProperty(PropertyName = "presentation")]
+        public string? DisplayName { get; set; }
+        [JsonProperty(PropertyName = "option_type_name")]
+        public string? OptionType { get; set; }
+        [JsonProperty(PropertyName = "option_type_id")]
+        public int OptionTypeId { get; set; }
+        [JsonProperty(PropertyName = "option_type_presentation")]
+        public string? OptionTypeDisplay { get; set; }
     }
     public class ProductImage
     {

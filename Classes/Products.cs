@@ -82,15 +82,25 @@ namespace GoNotifyMe.Classes
 
     public class ApiProductVariant
     {
-        public int product_id { get; set; }
-        public dynamic? options { get; set; }
-        public string? sku { get; set; }
-        public float price { get; set; }
-        public float cost_price { get; set; }
-        public string? gd_size_reference { get; set; }
-        public bool track_inventory { get; set; }
-        public float fixed_stock { get; set; }
-        public List<ProductImage>? images { get; set; }
-        public int tax_category_id { get; set; }
+        [JsonProperty(PropertyName = "product_id")]
+        public int VariantID { get; set; }
+        [JsonProperty(PropertyName = "options")]
+        public dynamic? Options { get; set; }
+        [JsonProperty(PropertyName = "sku")]
+        public string? SKU { get; set; }
+        [JsonProperty(PropertyName = "price")]
+        public float Price { get; set; }
+        [JsonProperty(PropertyName = "cost_price")]
+        public float DisplayPrice { get; set; }
+        [JsonProperty(PropertyName = "gd_size_reference")]
+        public string? SizeReference { get; set; }
+        [JsonProperty(PropertyName = "track_inventory")]
+        public bool TrackInventory { get; set; }
+        [JsonProperty(PropertyName = "fixed_stock")]
+        public float CurrentStock { get; set; }
+        [JsonProperty(PropertyName = "images")]
+        public List<ProductImage>? Images { get; set; }
+        [JsonProperty(PropertyName = "tax_category_id")]
+        public int TaxCategory { get; set; }
     }
 }

@@ -4,6 +4,8 @@ Configuration configuration = new Configuration(@"C:\Users\rauly\source\repos\Go
 
 configuration.ParseConfiguration();
 
+Client client = new Client(configuration.Options!.Token!, null);
+
 Console.WriteLine("Configuration Path");
 Console.WriteLine(configuration.DefaultConfigurationPath);
 Console.WriteLine(configuration.CurrentConfigurationPath);
@@ -17,5 +19,13 @@ Console.WriteLine(configuration.Options?.Mail?.Email);
 Console.WriteLine(configuration.Options?.Mail?.Password);
 Console.WriteLine(configuration.Options?.Mail?.Server);
 Console.WriteLine(configuration.Options?.Mail?.Port);
+
+var productsFromAPI = client.GetAllProducts();
+
+Console.WriteLine(productsFromAPI.Products!.Count);
+
+var firstProduct = productsFromAPI.Products[0];
+
+Console.WriteLine(firstProduct!.name);
 
 var a = Console.ReadLine();

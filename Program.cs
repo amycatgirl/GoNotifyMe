@@ -26,6 +26,7 @@ Console.WriteLine(productsFromAPI.Products!.Count);
 
 var firstProduct = productsFromAPI.Products[0];
 
-Console.WriteLine(firstProduct!.name);
+Console.WriteLine(firstProduct!.Name);
+Console.WriteLine(firstProduct!.Price.GetType());
 
 var a = Console.ReadLine();

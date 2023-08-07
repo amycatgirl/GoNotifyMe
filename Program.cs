@@ -1,10 +1,11 @@
 ﻿using GoNotifyMe;
+using GoNotifyMe.Clients;
 
 Configuration configuration = new Configuration(@"C:\Users\rauly\source\repos\GoNotifyMe\Configuration\config.toml");
 
 configuration.ParseConfiguration();
 
-Client client = new Client(configuration.Options!.Token!, null);
+ApiClient client = new ApiClient(configuration.Options!.Token!, null);
 
 Console.WriteLine("Configuration Path");
 Console.WriteLine(configuration.DefaultConfigurationPath);

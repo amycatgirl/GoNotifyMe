@@ -1,7 +1,23 @@
 ﻿using Newtonsoft.Json;
 
-namespace GoNotifyMe.Classes
+namespace GoNotifyMe.Clients
 {
+    public class ProductList
+    {
+        [JsonProperty(PropertyName = "products")]
+        public List<ApiIndividualProduct>? Products { get; set; }
+        [JsonProperty(PropertyName = "count")]
+        public int Count { get; set; }
+        [JsonProperty(PropertyName = "total_count")]
+        public int TotalAmount { get; set; }
+        [JsonProperty(PropertyName = "current_page")]
+        public int? CurrentPage { get; set; }
+        [JsonProperty(PropertyName = "per_page")]
+        public int ProductsPerPage { get; set; }
+        [JsonProperty(PropertyName = "pages")]
+        public int Pages { get; set; }
+    }
+
     public class ProductAttribute
     {
         [JsonProperty(PropertyName = "id")]
@@ -23,21 +39,7 @@ namespace GoNotifyMe.Classes
         string? URL { get; set; }
     }
 
-    public class ApiProducts
-    {
-        [JsonProperty(PropertyName = "products")]
-        public List<ApiIndividualProduct>? Products { get; set; }
-        [JsonProperty(PropertyName = "count")]
-        public int Count { get; set; }
-        [JsonProperty(PropertyName = "total_count")]
-        public int TotalAmount { get; set; }
-        [JsonProperty(PropertyName = "current_page")]
-        public int? CurrentPage { get; set; }
-        [JsonProperty(PropertyName = "per_page")]
-        public int ProductsPerPage { get; set; }
-        [JsonProperty(PropertyName = "pages")]
-        public int Pages { get; set; }
-    }
+
     public class ApiIndividualProduct
     {
         [JsonProperty(PropertyName = "id")]

@@ -1,29 +1,31 @@
 ﻿using Flurl;
 using Flurl.Http;
-using GoNotifyMe.Classes;
 
-namespace GoNotifyMe
+namespace GoNotifyMe.Clients
 {
-    internal class Client
+    internal class ApiClient
     {
         private readonly string token;
         private readonly string baseURL;
         private readonly string userAgent;
-        public Client(string token, string? userAgent)
+        public ApiClient(string token, string? userAgent)
         {
             this.token = token;
             this.userAgent = userAgent ?? @"GMSharp by Amy/1.0";
             baseURL = "https://gomarket.com.do/api/";
         }
-
-        public ApiProducts GetAllProducts()
+        /// <summary>
+        /// Gets a list of all available products
+        /// </summary>
+        /// <returns>A product list</returns>
+        public ProductList GetAllProducts()
         {
             try
             {
-                ApiProducts result = baseURL.AppendPathSegment("v1/products")
+                var result = baseURL.AppendPathSegment("v1/products")
                                           .WithHeader("X-Spree-Token", value: token)
                                           .WithHeader("User_Agent", value: userAgent)
-                                          .GetJsonAsync<ApiProducts>()
+                                          .GetJsonAsync<ProductList>()
                                           .Result;
                 return result;
             }

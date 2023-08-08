@@ -2,6 +2,8 @@
 
 namespace GoNotifyMe.Clients
 {
+
+    // TODO: Follow the api's structure when possible.
     public class ProductList
     {
         [JsonProperty(PropertyName = "products")]
@@ -43,43 +45,51 @@ namespace GoNotifyMe.Clients
     public class ApiIndividualProduct
     {
         [JsonProperty(PropertyName = "id")]
-        public required int Id { get; set; }
+        public int Id { get; set; }
         [JsonProperty(PropertyName = "name")]
-        public required string Name { get; set; }
+        public string? Name { get; set; }
         [JsonProperty(PropertyName = "description")]
         public string? Description { get; set; }
-        [JsonProperty(PropertyName = "brand_name")]
-        public string? Brand { get; set; }
-        [JsonProperty(PropertyName = "sku")]
-        public required string SKU { get; set; }
-        [JsonProperty(PropertyName = "primary_taxon_id")]
-        public required int MainCategoryId { get; set; }
-        [JsonProperty(PropertyName = "taxon_ids")]
-        public int[]? CategoryIds { get; set; }
         [JsonProperty(PropertyName = "price")]
-        public required float Price { get; set; }
+        public Single? Price { get; set; }
         [JsonProperty(PropertyName = "display_price")]
-        public required string DisplayPrice { get; set; }
-        [JsonProperty(PropertyName = "product_properties_attributes")]
-        public List<ProductAttribute>? Attributes { get; set; }
-        [JsonProperty(PropertyName = "cost_price")]
-        public float ListPrice { get; set; }
-        [JsonProperty(PropertyName = "gd_size_reference")]
-        public string? DeliverySizeReference { get; set; }
-        [JsonProperty(PropertyName = "track_inventory")]
-        public bool TrackInventory { get; set; }
-        [JsonProperty(PropertyName = "fixed_stock")]
-        public float CurrentStock { get; set; }
+        public string? DisplayPrice { get; set; }
         [JsonProperty(PropertyName = "available_on")]
-        public DateTime? AvailabilityDate { get; set; }
-        [JsonProperty(PropertyName = "short_description")]
-        public string? ShortDescription { get; set; }
-        [JsonProperty(PropertyName = "images")]
-        public List<ProductImage>? Images { get; set; }
-        [JsonProperty(PropertyName = "tax_category_id")]
-        public int TaxCategory { get; set; }
+        public DateTime? AvailableOn { get; set; }
+        [JsonProperty(PropertyName = "slug")]
+        public string? Slug { get; set; }
+        [JsonProperty(PropertyName = "meta_description")]
+        public string? MetaDescription { get; set; }
+        [JsonProperty(PropertyName = "meta_keywords")]
+        public string[]? MetaKeywords { get; set; }
+        [JsonProperty(PropertyName = "shipping_category_id")]
+        public int? ShippingCategory { get; set; }
+        [JsonProperty(PropertyName = "taxon_ids")]
+        public int[]? TaxonIds { get; set; }
+        [JsonProperty(PropertyName = "total_on_hand")]
+        public int? TotalOnHand { get; set; }
+        [JsonProperty(PropertyName = "avg_rating")]
+        public Single? AverageRating { get; set; }
+        [JsonProperty(PropertyName = "reviews_count")]
+        public int? ReviewsAmmount { get; set; }
+        [JsonProperty(PropertyName = "is_visible")]
+        public bool? Visibility { get; set; }
+        [JsonProperty(PropertyName = "primary_taxon_id")]
+        public int? MainTaxonId { get; set; }
+        [JsonProperty(PropertyName = "ext_id")]
+        public int? ExtId { get; set; }
+        [JsonProperty(PropertyName = "master")]
+        public dynamic? MasterVariant { get; set; }
+        [JsonProperty(PropertyName = "variants")]
+        public dynamic? Variants { get; set; }
         [JsonProperty(PropertyName = "option_types")]
-        public dynamic[]? Variants { get; set; }
+        public dynamic? OptionTypes { get; set; }
+        [JsonProperty(PropertyName = "product_properties")]
+        public dynamic? Properites { get; set; }
+        [JsonProperty(PropertyName = "classifications")]
+        public dynamic[]? Classifications { get; set; }
+        [JsonProperty(PropertyName = "has_variants")]
+        public bool? HasVariants { get; set; }
     }
 
     public class ApiProductVariant

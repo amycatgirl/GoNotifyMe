@@ -2,12 +2,22 @@
 
 namespace GoNotifyMe.Clients
 {
+    // ////////////////////////////////////////////////////////
+    // TODO: Refactor ApiProductImage to be more flexible
+    // TODO: Create ApiVariantProduct that extends ApiProduct
+    //
+    // IMPORTANT: Follow the api's structure when possible.
+    // ///////////////////////////////////////////////////////
+    //
+    // Note: Add tasks that need to be completed above me,
+    // It makes managing tasks a lot more... ummm, cooler B)
+    //
+    // ///////////////////////////////////////////////////////
 
-    // TODO: Follow the api's structure when possible.
-    public class ProductList
+    public class ApiProductList
     {
         [JsonProperty(PropertyName = "products")]
-        public List<ApiIndividualProduct>? Products { get; set; }
+        public List<ApiProductListItem>? Products { get; set; }
         [JsonProperty(PropertyName = "count")]
         public int Count { get; set; }
         [JsonProperty(PropertyName = "total_count")]
@@ -20,7 +30,7 @@ namespace GoNotifyMe.Clients
         public int Pages { get; set; }
     }
 
-    public class ProductAttribute
+    public class ApiProductAttribute
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
@@ -35,14 +45,14 @@ namespace GoNotifyMe.Clients
         [JsonProperty(PropertyName = "option_type_presentation")]
         public string? OptionTypeDisplay { get; set; }
     }
-    public class ProductImage
+    
+    public class ApiProductImage
     {
         [JsonProperty(PropertyName = "remote_url")]
         string? URL { get; set; }
     }
 
-
-    public class ApiIndividualProduct
+    public class ApiProductListItem
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
@@ -92,7 +102,61 @@ namespace GoNotifyMe.Clients
         public bool? HasVariants { get; set; }
     }
 
-    public class ApiProductVariant
+    public class ApiProduct
+    {
+        [JsonProperty(PropertyName = "id")]
+        public required string Id { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public required string Name { get; set; }
+        [JsonProperty(PropertyName = "sku")]
+        public required string Sku { get; set; }
+        [JsonProperty(PropertyName = "price")]
+        public required Single Price { get; set; }
+        [JsonProperty(PropertyName = "weight")]
+        public int? Weight { get; set; }
+        [JsonProperty(PropertyName = "width")]
+        public int? Width { get; set; }
+        [JsonProperty(PropertyName = "height")]
+        public int Height { get; set; }
+        [JsonProperty(PropertyName = "depth")]
+        public int? Depth { get; set; }
+        [JsonProperty(PropertyName = "is_master")]
+        public bool? IsMainProduct { get; set; }
+        [JsonProperty(PropertyName = "slug")]
+        public string? Slug { get; set; }
+        [JsonProperty(PropertyName = "description")]
+        public string? Description { get; set; }
+        [JsonProperty(PropertyName = "track_inventory")]
+        public bool? ShouldTrackInventory { get; set; }
+        [JsonProperty(PropertyName = "product_id")]
+        public int? ProductId { get; set; }
+        [JsonProperty(PropertyName = "vendor_id")]
+        public int? Vendor { get; set; }
+        [JsonProperty(PropertyName = "ext_int")]
+        public int? ExtInt { get; set; }
+        [JsonProperty(PropertyName = "option_values")]
+        public dynamic[]? OptionValues { get; set; }
+        // TODO: Change dynamic to ApiImage Class (Assignee: @amycatgirl)
+        [JsonProperty(PropertyName = "images")]
+        public dynamic[]? Images { get; set; }
+        [JsonProperty(PropertyName = "display_price")]
+        public string? DisplayPrice { get; set; }
+        [JsonProperty(PropertyName = "options_text")]
+        public string? OptionsText { get; set; }
+        [JsonProperty(PropertyName = "in_stock")]
+        public bool? InStock { get; set; }
+        [JsonProperty(PropertyName = "is_backorderable")]
+        public bool? AllowOrdersWithoutStock { get; set; }
+        [JsonProperty(PropertyName = "is_orderable")]
+        public bool? AllowOrders { get; set; }
+        [JsonProperty(PropertyName = "total_on_hand")]
+        public int? TotalOnHand { get; set; }
+        [JsonProperty(PropertyName = "is_destroyed")]
+        public bool? IsDestroyed { get; set; }
+
+    }
+
+        public class ApiProductVariant
     {
         [JsonProperty(PropertyName = "product_id")]
         public int VariantID { get; set; }
@@ -111,7 +175,7 @@ namespace GoNotifyMe.Clients
         [JsonProperty(PropertyName = "fixed_stock")]
         public float CurrentStock { get; set; }
         [JsonProperty(PropertyName = "images")]
-        public List<ProductImage>? Images { get; set; }
+        public List<ApiProductImage>? Images { get; set; }
         [JsonProperty(PropertyName = "tax_category_id")]
         public int TaxCategory { get; set; }
     }

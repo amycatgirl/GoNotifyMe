@@ -4,7 +4,6 @@ namespace GoNotifyMe.Clients
 {
     // ////////////////////////////////////////////////////////
     // TODO: Refactor ApiProductImage to be more flexible
-    // TODO: Create ApiVariantProduct that extends ApiProduct
     //
     // Amy: Follow the api's structure when possible.
     // ///////////////////////////////////////////////////////

@@ -128,7 +128,7 @@ namespace GoNotifyMe.Clients
         [JsonProperty(PropertyName = "option_types")]
         public ApiProductOptionType[]? OptionTypes { get; set; }
         [JsonProperty(PropertyName = "product_properties")]
-        public dynamic? Properites { get; set; }
+        public ApiProductProperties[]? Properites { get; set; }
         [JsonProperty(PropertyName = "classifications")]
         public dynamic[]? Classifications { get; set; }
         [JsonProperty(PropertyName = "has_variants")]
@@ -161,6 +161,20 @@ namespace GoNotifyMe.Clients
         public required string Presentation { get; set; }
         [JsonProperty(PropertyName = "position")]
         public required string Position { get; set; }
+    }
+
+    public class ApiProductProperties
+    {
+        [JsonProperty(PropertyName = "id")]
+        public required string Id { get; set; }
+        [JsonProperty(PropertyName = "product_id")]
+        public required string ProductId { get; set; }
+        [JsonProperty(PropertyName = "property_id")]
+        public required string PropertyId { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public required string Value { get; set; }
+        [JsonProperty(PropertyName = "property_name")]
+        public required string Name { get; set; }
     }
 
     public class ApiProduct

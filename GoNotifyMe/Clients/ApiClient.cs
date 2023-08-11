@@ -18,13 +18,14 @@ namespace GoNotifyMe.Clients
         /// Gets a list of all available products
         /// </summary>
         /// <returns>A product list</returns>
-        public ApiProductList GetAllProducts()
+        public ApiProductList GetAllProducts(int MaxItemsPerPage = 25)
         {
             try
             {
                 var result = baseURL.AppendPathSegment("v1/products")
                                           .WithHeader("X-Spree-Token", value: token)
                                           .WithHeader("User_Agent", value: userAgent)
+                                          .SetQueryParam("per_page", MaxItemsPerPage)
                                           .GetJsonAsync<ApiProductList>()
                                           .Result;
                 return result;

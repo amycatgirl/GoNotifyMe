@@ -21,13 +21,18 @@ Console.WriteLine(configuration.Options?.Mail?.Password);
 Console.WriteLine(configuration.Options?.Mail?.Server);
 Console.WriteLine(configuration.Options?.Mail?.Port);
 
-var productsFromAPI = client.GetAllProducts();
+var productsFromAPI = client.GetAllProducts(32);
 
-Console.WriteLine(productsFromAPI.Products!.Count);
+Console.WriteLine(productsFromAPI.Products?.Count);
 
-var firstProduct = productsFromAPI.Products[0];
+// I already know there is a product. So why should I check if there really is one?
+var firstProduct = productsFromAPI.Products![0];
 
 Console.WriteLine(firstProduct!.Name);
-Console.WriteLine(firstProduct!.Price.GetType());
+Console.WriteLine(firstProduct!.Price?.GetType());
+
+// Can we get the image url now?
+// I mean, it's unnecessary for this app, but I am making a full api client, soooooooooo
+Console.WriteLine(firstProduct!.Variants![0].Images![0].SmallUrl);
 
 var a = Console.ReadLine();

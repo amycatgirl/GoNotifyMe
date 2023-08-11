@@ -47,8 +47,54 @@ namespace GoNotifyMe.Clients
 
     public class ApiProductImage
     {
-        [JsonProperty(PropertyName = "remote_url")]
-        string? URL { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string? Id { get; set; }
+        [JsonProperty(PropertyName = "position")]
+        public string? Position { get; set; }
+        [JsonProperty(PropertyName = "attachment_content_type")]
+        public string? AttachmentContentType { get; set; }
+        [JsonProperty(PropertyName = "attachment_content_name")]
+        public string? AttachmentContentName { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public string? Type { get; set; }
+        [JsonProperty(PropertyName = "attachment_updated_at")]
+        public string? AttachmentUpdatedAt { get; set; }
+        [JsonProperty(PropertyName = "attachment_width")]
+        public string? AttachmentWidth { get; set; }
+        [JsonProperty(PropertyName = "attachment_height")]
+        public string? AttachmentHeight { get; set; }
+        [JsonProperty(PropertyName = "alt")]
+        public string? AltText { get; set; }
+        [JsonProperty(PropertyName = "viewable_type")]
+        public string? ViewableType { get; set; }
+        [JsonProperty(PropertyName = "viewable_id")]
+        public string? ViewableId { get; set; }
+        [JsonProperty(PropertyName = "ext_id")]
+        public string? ExtId { get; set; }
+        [JsonProperty(PropertyName = "mini_url")]
+        public string? MiniUrl { get; set; }
+        [JsonProperty(PropertyName = "small_url")]
+        public string? SmallUrl { get; set; }
+        [JsonProperty(PropertyName = "product_url")]
+        public string? ProductUrl { get; set; }
+        [JsonProperty(PropertyName = "pdp_thumbnail_url")]
+        public string? PdpThumbnailUrl { get; set; }
+        [JsonProperty(PropertyName = "pdp_and_carousel_url")]
+        public string? PdpAndCarouselUrl { get; set; }
+        [JsonProperty(PropertyName = "pdp_and_carousel_xs_url")]
+        public string? PdpAndCarouselXsUrl { get; set; }
+        [JsonProperty(PropertyName = "pdp_and_carousel_sm_url")]
+        public string? PdpAndCarouselSmUrl { get; set; }
+        [JsonProperty(PropertyName = "pdp_and_carousel_md_url")]
+        public string? PdpAndCarouselMdUrl { get; set; }
+        [JsonProperty(PropertyName = "pdp_and_carousel_lg_url")]
+        public string? PdpAndCarouselLgUrl { get; set; }
+        [JsonProperty(PropertyName = "large_url")]
+        public string? LargeUrl { get; set; }
+        [JsonProperty(PropertyName = "plp_url")]
+        public string? PlpUrl { get; set; }
+        [JsonProperty(PropertyName = "zoomed_url")]
+        public string? ZoomedUrl { get; set; }
     }
 
     public class ApiProductListItem
@@ -136,7 +182,7 @@ namespace GoNotifyMe.Clients
         public dynamic[]? OptionValues { get; set; }
         // TODO: Change dynamic to ApiImage Class (Assignee: @amycatgirl)
         [JsonProperty(PropertyName = "images")]
-        public dynamic[]? Images { get; set; }
+        public ApiProductImage[]? Images { get; set; }
         [JsonProperty(PropertyName = "display_price")]
         public string? DisplayPrice { get; set; }
         [JsonProperty(PropertyName = "options_text")]

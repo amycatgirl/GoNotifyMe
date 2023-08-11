@@ -135,6 +135,22 @@ namespace GoNotifyMe.Clients
         public bool? HasVariants { get; set; }
     }
 
+    public class ApiProductOptionValues
+    {
+        [JsonProperty(PropertyName = "id")]
+        public required string Id { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public required string Name { get; set; }
+        [JsonProperty(PropertyName = "presentation")]
+        public required string Presentation { get; set; }
+        [JsonProperty(PropertyName = "option_type_name")]
+        public required string TypeName { get; set; }
+        [JsonProperty(PropertyName = "option_type_id")]
+        public required string TypeId { get; set; }
+        [JsonProperty(PropertyName = "option_type_presentation")]
+        public required string TypePresentation { get; set; }
+    }
+
     public class ApiProduct
     {
         [JsonProperty(PropertyName = "id")]
@@ -168,7 +184,7 @@ namespace GoNotifyMe.Clients
         [JsonProperty(PropertyName = "ext_int")]
         public int? ExtInt { get; set; }
         [JsonProperty(PropertyName = "option_values")]
-        public dynamic[]? OptionValues { get; set; }
+        public ApiProductOptionValues[]? OptionValues { get; set; }
         [JsonProperty(PropertyName = "images")]
         public ApiProductImage[]? Images { get; set; }
         [JsonProperty(PropertyName = "display_price")]
@@ -185,7 +201,6 @@ namespace GoNotifyMe.Clients
         public int? TotalOnHand { get; set; }
         [JsonProperty(PropertyName = "is_destroyed")]
         public bool? IsDestroyed { get; set; }
-
     }
 
     public class ApiProductVariant

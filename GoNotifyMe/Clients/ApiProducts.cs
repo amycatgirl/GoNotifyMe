@@ -6,7 +6,7 @@ namespace GoNotifyMe.Clients
     // TODO: Refactor ApiProductImage to be more flexible
     // TODO: Create ApiVariantProduct that extends ApiProduct
     //
-    // IMPORTANT: Follow the api's structure when possible.
+    // Amy: Follow the api's structure when possible.
     // ///////////////////////////////////////////////////////
     //
     // Note: Add tasks that need to be completed above me,
@@ -45,7 +45,7 @@ namespace GoNotifyMe.Clients
         [JsonProperty(PropertyName = "option_type_presentation")]
         public string? OptionTypeDisplay { get; set; }
     }
-    
+
     public class ApiProductImage
     {
         [JsonProperty(PropertyName = "remote_url")]
@@ -54,7 +54,6 @@ namespace GoNotifyMe.Clients
 
     public class ApiProductListItem
     {
-        [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
         [JsonProperty(PropertyName = "name")]
         public string? Name { get; set; }
@@ -89,9 +88,9 @@ namespace GoNotifyMe.Clients
         [JsonProperty(PropertyName = "ext_id")]
         public int? ExtId { get; set; }
         [JsonProperty(PropertyName = "master")]
-        public dynamic? MasterVariant { get; set; }
+        public ApiProduct? MasterVariant { get; set; }
         [JsonProperty(PropertyName = "variants")]
-        public dynamic? Variants { get; set; }
+        public ApiProduct[]? Variants { get; set; }
         [JsonProperty(PropertyName = "option_types")]
         public dynamic? OptionTypes { get; set; }
         [JsonProperty(PropertyName = "product_properties")]
@@ -111,13 +110,13 @@ namespace GoNotifyMe.Clients
         [JsonProperty(PropertyName = "sku")]
         public required string Sku { get; set; }
         [JsonProperty(PropertyName = "price")]
-        public required Single Price { get; set; }
+        public Single? Price { get; set; }
         [JsonProperty(PropertyName = "weight")]
-        public int? Weight { get; set; }
+        public Single? Weight { get; set; }
         [JsonProperty(PropertyName = "width")]
         public int? Width { get; set; }
         [JsonProperty(PropertyName = "height")]
-        public int Height { get; set; }
+        public int? Height { get; set; }
         [JsonProperty(PropertyName = "depth")]
         public int? Depth { get; set; }
         [JsonProperty(PropertyName = "is_master")]
@@ -156,7 +155,7 @@ namespace GoNotifyMe.Clients
 
     }
 
-        public class ApiProductVariant
+    public class ApiProductVariant
     {
         [JsonProperty(PropertyName = "product_id")]
         public int VariantID { get; set; }

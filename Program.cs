@@ -1,7 +1,7 @@
 ﻿using GoNotifyMe;
 using GoNotifyMe.Clients;
 
-Configuration configuration = new Configuration(@"C:\Users\rauly\source\repos\GoNotifyMe\Configuration\config.toml");
+Configuration configuration = new Configuration(@"./Configuration/config.toml");
 
 configuration.ParseConfiguration();
 
@@ -13,7 +13,7 @@ Console.WriteLine(configuration.CurrentConfigurationPath);
 
 Console.WriteLine("\nConfiguration Options");
 Console.WriteLine($"Token: {configuration.Options?.Token}");
-Console.WriteLine($"Target Email: { configuration.Options?.Target}");
+Console.WriteLine($"Target Email: {configuration.Options?.Target}");
 Console.WriteLine($"Interval {configuration.Options?.FetchInterval}");
 Console.WriteLine("\nEmail Configuration");
 Console.WriteLine(configuration.Options?.Mail?.Email);

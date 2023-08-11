@@ -14,6 +14,7 @@ namespace GoNotifyMe.Clients
             this.userAgent = userAgent ?? @"GMSharp by Amy/1.0";
             baseURL = "https://gomarket.com.do/api/";
         }
+
         /// <summary>
         /// Gets a list of all available products
         /// </summary>
@@ -27,6 +28,31 @@ namespace GoNotifyMe.Clients
                                           .WithHeader("User_Agent", value: userAgent)
                                           .SetQueryParam("per_page", MaxItemsPerPage)
                                           .GetJsonAsync<ApiProductList>()
+                                          .Result;
+                return result;
+            }
+            catch (FlurlHttpException exception)
+            {
+                var error = exception.GetResponseJsonAsync();
+
+                Console.WriteLine($"Found error on URL '{exception.Call.Request.Url}': \n {error}");
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets a singular product
+        /// </summary>
+        /// <returns>A product</returns>
+        public ApiProduct GetProduct(int ProductId)
+        {
+            try
+            {
+                var result = baseURL.AppendPathSegment($"v1/products/{ProductId}")
+                                          .WithHeader("X-Spree-Token", value: token)
+                                          .WithHeader("User_Agent", value: userAgent)
+                                          .GetJsonAsync<ApiProduct>()
                                           .Result;
                 return result;
             }

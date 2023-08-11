@@ -2,17 +2,6 @@
 
 namespace GoNotifyMe.Clients
 {
-    // ////////////////////////////////////////////////////////
-    // TODO: Refactor ApiProductImage to be more flexible
-    //
-    // Amy: Follow the api's structure when possible.
-    // ///////////////////////////////////////////////////////
-    //
-    // Note: Add tasks that need to be completed above me,
-    // It makes managing tasks a lot more... ummm, cooler B)
-    //
-    // ///////////////////////////////////////////////////////
-
     public class ApiProductList
     {
         [JsonProperty(PropertyName = "products")]
@@ -180,7 +169,6 @@ namespace GoNotifyMe.Clients
         public int? ExtInt { get; set; }
         [JsonProperty(PropertyName = "option_values")]
         public dynamic[]? OptionValues { get; set; }
-        // TODO: Change dynamic to ApiImage Class (Assignee: @amycatgirl)
         [JsonProperty(PropertyName = "images")]
         public ApiProductImage[]? Images { get; set; }
         [JsonProperty(PropertyName = "display_price")]

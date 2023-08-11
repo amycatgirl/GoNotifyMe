@@ -180,7 +180,7 @@ namespace GoNotifyMe.Clients
     public class ApiProduct
     {
         [JsonProperty(PropertyName = "id")]
-        public required string Id { get; set; }
+        public required int Id { get; set; }
         [JsonProperty(PropertyName = "name")]
         public required string Name { get; set; }
         [JsonProperty(PropertyName = "sku")]

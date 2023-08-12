@@ -2,10 +2,9 @@
 
 namespace GoNotifyMe.Clients
 {
-    public class ApiProductList
+
+    public class ApiItemList
     {
-        [JsonProperty(PropertyName = "products")]
-        public List<ApiProductListItem>? Products { get; set; }
         [JsonProperty(PropertyName = "count")]
         public int Count { get; set; }
         [JsonProperty(PropertyName = "total_count")]
@@ -16,6 +15,18 @@ namespace GoNotifyMe.Clients
         public int ProductsPerPage { get; set; }
         [JsonProperty(PropertyName = "pages")]
         public int Pages { get; set; }
+    }
+
+    public class ApiProductList : ApiItemList
+    {
+        [JsonProperty(PropertyName = "products")]
+        public List<ApiProductListItem>? Products { get; set; }
+    }
+
+    public class ApiVariantList : ApiItemList
+    {
+        [JsonProperty(PropertyName = "variants")]
+        public List<ApiVariantListItem>? Variants { get; set; }
     }
 
     public class ApiProductAttribute
@@ -135,6 +146,8 @@ namespace GoNotifyMe.Clients
         public bool? HasVariants { get; set; }
     }
 
+
+
     public class ApiProductOptionValues
     {
         [JsonProperty(PropertyName = "id")]
@@ -227,6 +240,28 @@ namespace GoNotifyMe.Clients
         public int? TotalOnHand { get; set; }
         [JsonProperty(PropertyName = "is_destroyed")]
         public bool? IsDestroyed { get; set; }
+    }
+
+    public class ApiStockItem
+    {
+        [JsonProperty(PropertyName = "id")]
+        public required int Id { get; set; }
+        [JsonProperty(PropertyName = "count_on_hand")]
+        public int? OnHand { get; set; }
+        [JsonProperty(PropertyName = "stock_location_id")]
+        public int? LocationId { get; set; }
+        [JsonProperty(PropertyName = "backorderable")]
+        public bool? Backorderable { get; set; }
+        [JsonProperty(PropertyName = "available")]
+        public bool? Available { get; set; }
+        [JsonProperty(PropertyName = "stock_location_name")]
+        public string? LocationName { get; set; }
+    }
+
+    public class ApiVariantListItem : ApiProduct
+    {
+        [JsonProperty(PropertyName = "stock_items")]
+        public ApiStockItem[]? StockItems { get; set; }
     }
 
     public class ApiProductVariant

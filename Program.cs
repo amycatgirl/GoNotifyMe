@@ -22,8 +22,12 @@ Console.WriteLine(configuration.Options?.Mail?.Server);
 Console.WriteLine(configuration.Options?.Mail?.Port);
 
 var productsFromAPI = client.GetAllProducts(32);
+var variantsFromAPI = client.GetVariantList();
 
 Console.WriteLine(productsFromAPI.Products?.Count);
+Console.WriteLine(variantsFromAPI.Count);
+
+Console.WriteLine(variantsFromAPI.Variants?[0].StockItems?[0].LocationName ?? $"No Name for Location of stock in {variantsFromAPI.Variants![0].Name}");
 
 // I already know there is a product. So why should I check if there really is one?
 var firstProduct = productsFromAPI.Products![0];

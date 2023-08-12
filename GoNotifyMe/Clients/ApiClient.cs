@@ -67,6 +67,33 @@ namespace GoNotifyMe.Clients
         }
 
         /// <summary>
+        /// Gets all Variants
+        /// </summary>
+        /// <returns>A Variant list</returns>
+        public ApiVariantList GetVariantList(int pagerLimit = 25)
+        {
+            try
+            {
+                var result = baseURL.AppendPathSegment($"v1/variants")
+                                    .WithHeader("X-Spree-Token", value: token)
+                                    .WithHeader("User_Agent", value: userAgent)
+                                    .SetQueryParam("per_page", pagerLimit)
+                                    .GetJsonAsync<ApiVariantList>()
+                                    .Result;
+
+                return result;
+            }
+            catch (FlurlHttpException exception)
+            {
+                var error = exception.GetResponseJsonAsync();
+
+                Console.WriteLine($"Found error on URL '{exception.Call.Request.Url}': \n {error}");
+
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Gets a Variant
         /// </summary>
         /// <returns>A Variant</returns>

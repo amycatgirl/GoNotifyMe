@@ -19,7 +19,7 @@ namespace GoNotifyMe.Clients
         /// Gets a list of all available products
         /// </summary>
         /// <returns>A product list</returns>
-        public ApiProductList GetAllProducts(int MaxItemsPerPage = 25)
+        public ApiProductList GetProductList(int MaxItemsPerPage = 25)
         {
             try
             {

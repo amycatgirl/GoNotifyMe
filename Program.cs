@@ -21,7 +21,7 @@ Console.WriteLine(configuration.Options?.Mail?.Password);
 Console.WriteLine(configuration.Options?.Mail?.Server);
 Console.WriteLine(configuration.Options?.Mail?.Port);
 
-var productsFromAPI = client.GetAllProducts(32);
+var productsFromAPI = client.GetProductList(32);
 var variantsFromAPI = client.GetVariantList();
 
 Console.WriteLine(productsFromAPI.Products?.Count);

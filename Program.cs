@@ -41,4 +41,7 @@ Console.WriteLine(sameFirstProductButDifferentIGuessIdkThisIsATest.Name);
 // I mean, it's unnecessary for this app, but I am making a full api client, soooooooooo
 Console.WriteLine(firstProduct!.Variants![0].Images![0].SmallUrl);
 
+// Now get the first variant through GetVariant
+Console.WriteLine($"First Variant Price: {client.GetVariant(firstProduct.Variants![0].Id).Price}");
+
 var a = Console.ReadLine();

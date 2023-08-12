@@ -65,5 +65,31 @@ namespace GoNotifyMe.Clients
                 throw;
             }
         }
+
+        /// <summary>
+        /// Gets a Variant
+        /// </summary>
+        /// <returns>A Variant</returns>
+        public ApiProductVariant GetVariant(int VariantId)
+        {
+            try
+            {
+                var result = baseURL.AppendPathSegment($"v1/variants/{VariantId}")
+                                    .WithHeader("X-Spree-Token", value: token)
+                                    .WithHeader("User_Agent", value: userAgent)
+                                    .GetJsonAsync<ApiProductVariant>()
+                                    .Result;
+
+                return result;
+            }
+            catch (FlurlHttpException exception)
+            {
+                var error = exception.GetResponseJsonAsync();
+
+                Console.WriteLine($"Found error on URL '{exception.Call.Request.Url}': \n {error}");
+
+                throw;
+            }
+        }
     }
 }

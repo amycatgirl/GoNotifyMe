@@ -118,5 +118,32 @@ namespace GoNotifyMe.Clients
                 throw;
             }
         }
+
+        /// <summary>
+        /// Gets a list of categories
+        /// </summary>
+        ///
+        /// <returns>A list of categories</returns>
+        public List<ApiCategory> GetCategories()
+        {
+            try
+            {
+                var result = baseURL.AppendPathSegment($"v1/categories")
+                                    .WithHeader("X-Spree-Token", value: token)
+                                    .WithHeader("User_Agent", value: userAgent)
+                                    .GetJsonAsync<List<ApiCategory>>()
+                                    .Result;
+
+                return result;
+            }
+            catch (FlurlHttpException exception)
+            {
+                var error = exception.GetResponseJsonAsync();
+
+                Console.WriteLine($"Found error on URL '{exception.Call.Request.Url}': \n {error}");
+
+                throw;
+            }
+        }
     }
 }

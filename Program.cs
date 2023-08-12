@@ -48,4 +48,10 @@ Console.WriteLine(firstProduct!.Variants![0].Images![0].SmallUrl);
 // Now get the first variant through GetVariant
 Console.WriteLine($"First Variant Price: {client.GetVariant(firstProduct.Variants![0].Id).Price}");
 
+// Last thing before merging :D
+var Categories = client.GetCategories();
+var FirstCategory = Categories.First();
+
+Console.WriteLine($"First Category on list: {FirstCategory.Name} (ID: {FirstCategory.Id})");
+
 var a = Console.ReadLine();

@@ -50,6 +50,7 @@ namespace GoMarket.Tests
             var result = _client.GetProduct(Id);
 
             Assert.IsInstanceOfType(result, typeof(ApiProduct), "Result should be a valid product.");
+            Assert.AreEqual(result.Id, Id, "Ids do not match");
         }
     }
 }

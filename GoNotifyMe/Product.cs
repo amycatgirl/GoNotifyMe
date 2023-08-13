@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GoNotifyMe
+﻿namespace GoNotifyMe
 {
     internal class Product
     {
@@ -20,36 +14,6 @@ namespace GoNotifyMe
             this.minimumStock = minimumStock;
             this.stock = stock;
         }
-
-        public string Id
-        {
-            get
-            {
-                return id;
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-        }
-
-        public int Stock
-        {
-            get
-            {
-                return stock;
-            }
-
-            set
-            {
-                stock = value;
-            }
-        }
-
 
         public bool ShouldNotifyOfRestock()
         {

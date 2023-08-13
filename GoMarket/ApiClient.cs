@@ -1,9 +1,9 @@
 ﻿using Flurl;
 using Flurl.Http;
 
-namespace GoNotifyMe.Clients
+namespace GoMarket
 {
-    internal class ApiClient
+    public class ApiClient
     {
         private readonly string token;
         private readonly string baseURL;

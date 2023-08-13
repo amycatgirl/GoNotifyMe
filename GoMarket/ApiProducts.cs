@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace GoNotifyMe.Clients
+namespace GoMarket
 {
 
     public class ApiItemList

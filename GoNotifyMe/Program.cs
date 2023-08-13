@@ -1,7 +1,7 @@
 ﻿using GoNotifyMe;
-using GoNotifyMe.Clients;
+using GoMarket;
 
-Configuration configuration = new Configuration(@"./Configuration/config.toml");
+Configuration configuration = new Configuration(@"../Configuration/config.toml");
 
 configuration.ParseConfiguration();
 

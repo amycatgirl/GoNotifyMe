@@ -50,15 +50,7 @@ namespace GoNotifyMe
 
         public MimeMessage GenerateRestockMessage(List<ApiProduct> products)
         {
-            // 1. Get products
-            // 2. Get current app configuration
-            // 3. Set mail recipients
-            // 4. Return a RestockMessage
-
-
             var RestockMessage = new MimeMessage();
-
-
 
             RestockMessage.From.Add(new MailboxAddress(null, _Config.Options!.Mail!.Email));
             RestockMessage.To.Add(new MailboxAddress(null, _Config.Options!.TargetEmail));

@@ -19,8 +19,6 @@ namespace GoNotifyMe
 
         private readonly Configuration _Config;
 
-        private readonly string Template = @"<h1>GoNotifyMe</h1>\n<p>These items need a restock:</p>";
-
         public Mail(Configuration config, string url, int port, string user, string password, bool useSSL = true)
         {
             _ServerURL = url;
@@ -54,7 +52,8 @@ namespace GoNotifyMe
             
             <p>The following items need restock:</p>
             
-            {HtmlList}";
+            {HtmlList}
+            ";
 
         }
 

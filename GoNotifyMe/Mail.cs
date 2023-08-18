@@ -22,6 +22,17 @@ namespace GoNotifyMe
 
         private readonly Generator templateGenerator;
 
+        /**
+        <summary>
+        Mail client constructor
+        </summary>
+        <param name="config">Configuration</param>
+        <param name="url">SMTP server url</param>
+        <param name="port">SMTP server port</param>
+        <param name="user">SMTP username for authentication</param>
+        <param name="password">SMTP password for authentication</param>
+        <param name="useSSL">Whether should the client use SSL for SMTP</param>
+        */
         public Mail(Configuration config, string url, int port, string user, string password, bool useSSL = true)
         {
             _ServerURL = url;
@@ -34,6 +45,10 @@ namespace GoNotifyMe
             templateGenerator = new Generator();
         }
 
+        /// <summary>
+        /// Send a message
+        /// </summary>
+        /// <param name="message"></param>
         public void SendMessage(MimeMessage message)
         {
             using (var client = new SmtpClient())
@@ -48,6 +63,11 @@ namespace GoNotifyMe
             }
         }
 
+        /// <summary>
+        /// Generate a message using a list of products
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns>A message</returns>
         public MimeMessage GenerateRestockMessage(List<ApiProduct> products)
         {
             var RestockMessage = new MimeMessage();

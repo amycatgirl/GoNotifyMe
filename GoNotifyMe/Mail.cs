@@ -53,7 +53,7 @@ namespace GoNotifyMe
         {
             using (var client = new SmtpClient())
             {
-                client.Connect(_ServerURL, _Port, SecureSocketOptions.SslOnConnect);
+                client.Connect(_ServerURL, _Port, _UseSSL ? SecureSocketOptions.SslOnConnect : SecureSocketOptions.None);
 
                 client.Authenticate(_User, _Password);
 

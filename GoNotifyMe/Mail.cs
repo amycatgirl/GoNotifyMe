@@ -5,6 +5,7 @@ using MimeKit;
 using MimeKit.Text;
 
 using GoMarket;
+using GoNotifyMe.Template;
 
 namespace GoNotifyMe
 {
@@ -19,6 +20,8 @@ namespace GoNotifyMe
 
         private readonly Configuration _Config;
 
+        private readonly Generator templateGenerator;
+
         public Mail(Configuration config, string url, int port, string user, string password, bool useSSL = true)
         {
             _ServerURL = url;
@@ -27,6 +30,8 @@ namespace GoNotifyMe
             _Password = password;
             _UseSSL = useSSL;
             _Config = config;
+
+            templateGenerator = new Generator();
         }
 
         public void SendMessage(MimeMessage message)
@@ -41,20 +46,6 @@ namespace GoNotifyMe
 
                 client.Disconnect(true);
             }
-        }
-
-        private string generateTemplate(List<ApiProduct> products)
-        {
-            string HtmlList = "<ul>" + products.ToArray().Select(product => $"<li>{product.Name}: {product.InStock} in Stock</li>") + "</ul>";
-
-            return @$"
-            <h1>Some items require a restock</h1>
-            
-            <p>The following items need restock:</p>
-            
-            {HtmlList}
-            ";
-
         }
 
         public MimeMessage GenerateRestockMessage(List<ApiProduct> products)
@@ -75,7 +66,7 @@ namespace GoNotifyMe
 
             RestockMessage.Body = new TextPart(TextFormat.Html)
             {
-                Text = generateTemplate(products)
+                Text = $"<h1>Some items require a restock</h1>\n<p>The following items need restock:</p>\n{templateGenerator.GenerateHtmlList(products)}"
             };
 
             return RestockMessage;

@@ -14,7 +14,7 @@ namespace GoNotifyMe.Template
         /// </summary>
         /// <param name="apiProducts">Product List</param>
         /// <returns>Generated HTML List</returns>
-        public string GenerateHtmlList(List<ApiProduct> apiProducts)
+        public string GenerateHtmlList(List<ApiProductListItem> apiProducts)
         {
             string ListItems = string.Join("", apiProducts.ToArray().Select(product => $"<li>{product.Name}: {product.TotalOnHand} in Stock</li>"));
 

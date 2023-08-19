@@ -11,14 +11,9 @@ namespace GoNotifyMe
 {
     internal class MailClient
     {
-        private readonly string _ServerURL;
-        private readonly int _Port;
         private readonly bool _UseSSL;
 
-        private readonly string _User;
-        private readonly string _Password;
-
-        private readonly Configuration _Config;
+        private readonly Options _Config;
 
         private readonly Generator templateGenerator;
 
@@ -33,14 +28,9 @@ namespace GoNotifyMe
         <param name="password">SMTP password for authentication</param>
         <param name="useSSL">Whether should the client use SSL for SMTP</param>
         */
-        public MailClient(Configuration config, string url, int port, string user, string password, bool useSSL = true)
+        public MailClient(Configuration config)
         {
-            _ServerURL = url;
-            _Port = port;
-            _User = user;
-            _Password = password;
-            _UseSSL = useSSL;
-            _Config = config;
+            _Config = config.Options!;
 
             templateGenerator = new Generator();
         }
@@ -53,9 +43,9 @@ namespace GoNotifyMe
         {
             using (var client = new SmtpClient())
             {
-                client.Connect(_ServerURL, _Port, _UseSSL ? SecureSocketOptions.SslOnConnect : SecureSocketOptions.None);
+                client.Connect(_Config.Mail!.Server, _Config.Mail.Port, _Config.Mail.Method);
 
-                client.Authenticate(_User, _Password);
+                client.Authenticate(_Config.Mail.Username, _Config.Mail.Password);
 
                 client.Send(message);
 
@@ -68,12 +58,12 @@ namespace GoNotifyMe
         /// </summary>
         /// <param name="products"></param>
         /// <returns>A message</returns>
-        public MimeMessage GenerateRestockMessage(List<ApiProduct> products)
+        public MimeMessage GenerateRestockMessage(List<ApiProductListItem> products)
         {
             var RestockMessage = new MimeMessage();
 
-            RestockMessage.From.Add(new MailboxAddress("GoNotifyMe Automated", _Config.Options!.Mail!.Email));
-            RestockMessage.To.Add(new MailboxAddress(null, _Config.Options!.TargetEmail));
+            RestockMessage.From.Add(new MailboxAddress("GoNotifyMe Automated", _Config.Mail!.Email));
+            RestockMessage.To.Add(new MailboxAddress(null, _Config.TargetEmail));
             RestockMessage.Subject = $"[GoNotifyMe] {products.Count} product{(products.Count > 1 ? "s" : String.Empty)} need restock";
 
             RestockMessage.Body = new TextPart(TextFormat.Html)

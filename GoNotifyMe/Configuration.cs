@@ -1,4 +1,5 @@
-﻿using Tomlet;
+﻿using MailKit.Security;
+using Tomlet;
 using Tomlet.Attributes;
 using Tomlet.Models;
 
@@ -12,6 +13,12 @@ namespace GoNotifyMe
         /// </summary>
         [TomlProperty("email")]
         public string? Email { get; set; }
+
+        /// <summary>
+        /// Username of the sender
+        /// </summary>
+        [TomlProperty("username")]
+        public string? Username { get; set;}
 
         /// <summary>
         /// Password of the sender
@@ -29,6 +36,11 @@ namespace GoNotifyMe
         /// </summary>
         [TomlProperty("port")]
         public int Port { get; set; }
+        /// <summary>
+        /// Connection method
+        /// </summary>
+        [TomlProperty("method")]
+        public SecureSocketOptions Method { get; set; }
     }
 
     public class Options

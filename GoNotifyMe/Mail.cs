@@ -72,7 +72,7 @@ namespace GoNotifyMe
         {
             var RestockMessage = new MimeMessage();
 
-            RestockMessage.From.Add(new MailboxAddress(null, _Config.Options!.Mail!.Email));
+            RestockMessage.From.Add(new MailboxAddress("GoNotifyMe Automated", _Config.Options!.Mail!.Email));
             RestockMessage.To.Add(new MailboxAddress(null, _Config.Options!.TargetEmail));
             RestockMessage.Subject = $"[GoNotifyMe] {products.Count} product{(products.Count > 1 ? "s" : String.Empty)} need restock";
 

@@ -49,28 +49,28 @@ namespace GoNotifyMe
         /// GoMarket API Token
         /// </summary>
         [TomlProperty("token")]
-        internal string? Token { get; set; }
+        public string? Token { get; set; }
         
         /// <summary>
         /// Email address where the message should be sent to
         /// </summary>
         [TomlProperty("target")]
-        internal string? TargetEmail { get; set; }
+        public string? TargetEmail { get; set; }
         /// <summary>
         /// Amount of time (in days) to wait before checking for new alerts  
         /// </summary>
         [TomlProperty("interval")]
-        internal Int16 FetchInterval { get; set; }
+        public Int16 FetchInterval { get; set; }
 
         /// <summary>
         /// Mail Options
         /// </summary>
         [TomlProperty("mail")]
-        internal EmailOptions? Mail { get; set; }
+        public EmailOptions? Mail { get; set; }
 
     }
 
-    internal class Configuration
+    public class Configuration
     {
         public string DefaultConfigurationPath { get; }
         public string CurrentConfigurationPath { get; } = "";

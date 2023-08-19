@@ -1,0 +1,11 @@
+token = "template_token"
+target = 'template@example.com'
+interval = 1
+
+[mail]
+email = "something@bot.me"
+username = "something"
+password = "supersecretpassword"
+server = "smtp.bot.me"
+port = 587
+method = 3

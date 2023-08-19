@@ -11,11 +11,11 @@ public class GoNotifyMe__MessageGeneration
     {
         var templateGenerator = new Generator();
 
-        var SampleProductList = new List<ApiProduct>
+        var SampleProductList = new List<ApiProductListItem>
         {
-            new ApiProduct() { Name = "Test Item", Id = 1, Sku = "000000", TotalOnHand = 35 },
-            new ApiProduct() { Name = "Test Item", Id = 2, Sku = "000001", TotalOnHand = 45 },
-            new ApiProduct() { Name = "Test Item", Id = 1, Sku = "000002", TotalOnHand = 12 }
+            new ApiProductListItem() { Name = "Test Item", Id = 1, TotalOnHand = 35 },
+            new ApiProductListItem() { Name = "Test Item", Id = 2, TotalOnHand = 45 },
+            new ApiProductListItem() { Name = "Test Item", Id = 1, TotalOnHand = 12 }
         };
 
         var Template = templateGenerator.GenerateHtmlList(SampleProductList);

@@ -1,11 +1,15 @@
 ﻿using GoNotifyMe;
 using GoMarket;
 
+// TODO: Move all of this to tests
+
 Configuration configuration = new Configuration(@"../Configuration/config.toml");
 
 configuration.ParseConfiguration();
 
 ApiClient client = new ApiClient(configuration.Options!.Token!, null);
+
+MailClient mailClient = new MailClient(configuration);
 
 Console.WriteLine("Configuration Path");
 Console.WriteLine(configuration.DefaultConfigurationPath);
@@ -13,7 +17,7 @@ Console.WriteLine(configuration.CurrentConfigurationPath);
 
 Console.WriteLine("\nConfiguration Options");
 Console.WriteLine($"Token: {configuration.Options?.Token}");
-Console.WriteLine($"Target Email: {configuration.Options?.Target}");
+Console.WriteLine($"Target Email: {configuration.Options?.TargetEmail}");
 Console.WriteLine($"Interval {configuration.Options?.FetchInterval}");
 Console.WriteLine("\nEmail Configuration");
 Console.WriteLine(configuration.Options?.Mail?.Email);
@@ -53,5 +57,10 @@ var Categories = client.GetCategories();
 var FirstCategory = Categories.First();
 
 Console.WriteLine($"First Category on list: {FirstCategory.Name} (ID: {FirstCategory.Id})");
+
+var message = mailClient.GenerateRestockMessage(productsFromAPI.Products);
+
+// This should send a generated email, if not, then I am dumb af
+mailClient.SendMessage(message);
 
 var a = Console.ReadLine();

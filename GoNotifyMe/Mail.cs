@@ -9,7 +9,7 @@ using GoNotifyMe.Template;
 
 namespace GoNotifyMe
 {
-    internal class Mail
+    internal class MailClient
     {
         private readonly string _ServerURL;
         private readonly int _Port;
@@ -33,7 +33,7 @@ namespace GoNotifyMe
         <param name="password">SMTP password for authentication</param>
         <param name="useSSL">Whether should the client use SSL for SMTP</param>
         */
-        public Mail(Configuration config, string url, int port, string user, string password, bool useSSL = true)
+        public MailClient(Configuration config, string url, int port, string user, string password, bool useSSL = true)
         {
             _ServerURL = url;
             _Port = port;

@@ -9,7 +9,7 @@ configuration.ParseConfiguration();
 
 ApiClient client = new ApiClient(configuration.Options!.Token!, null);
 
-MailClient mailClient = new MailClient(configuration);
+MailClient mailClient = new MailClient(configuration.Options);
 
 Console.WriteLine("Configuration Path");
 Console.WriteLine(configuration.DefaultConfigurationPath);
@@ -61,6 +61,6 @@ Console.WriteLine($"First Category on list: {FirstCategory.Name} (ID: {FirstCate
 var message = mailClient.GenerateRestockMessage(productsFromAPI.Products);
 
 // This should send a generated email, if not, then I am dumb af
-mailClient.SendMessage(message);
+await mailClient.SendMessage(message);
 
 var a = Console.ReadLine();

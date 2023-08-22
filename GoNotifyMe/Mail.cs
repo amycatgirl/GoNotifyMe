@@ -9,7 +9,7 @@ using GoNotifyMe.Template;
 
 namespace GoNotifyMe
 {
-    internal class MailClient
+    public class MailClient
     {
         private readonly bool _UseSSL;
 
@@ -22,15 +22,10 @@ namespace GoNotifyMe
         Mail client constructor
         </summary>
         <param name="config">Configuration</param>
-        <param name="url">SMTP server url</param>
-        <param name="port">SMTP server port</param>
-        <param name="user">SMTP username for authentication</param>
-        <param name="password">SMTP password for authentication</param>
-        <param name="useSSL">Whether should the client use SSL for SMTP</param>
         */
-        public MailClient(Configuration config)
+        public MailClient(Options config)
         {
-            _Config = config.Options!;
+            _Config = config;
 
             templateGenerator = new Generator();
         }
@@ -39,7 +34,7 @@ namespace GoNotifyMe
         /// Send a message
         /// </summary>
         /// <param name="message"></param>
-        public void SendMessage(MimeMessage message)
+        public async Task SendMessage(MimeMessage message)
         {
             using (var client = new SmtpClient())
             {
@@ -47,7 +42,7 @@ namespace GoNotifyMe
 
                 client.Authenticate(_Config.Mail.Username, _Config.Mail.Password);
 
-                client.Send(message);
+                await client.SendAsync(message);
 
                 client.Disconnect(true);
             }

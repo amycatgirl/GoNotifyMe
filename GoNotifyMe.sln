@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoMarket.Tests", "GoMarket.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoNotifyMe.Tests", "GoNotifyMe.Tests\GoNotifyMe.Tests.csproj", "{EFF7C8E8-D76C-4E9A-BA9B-76775DF0EF15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotifyService", "NotifyService\NotifyService.csproj", "{8CFF478B-3D80-40A2-ACCD-817EDDAAB5DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{EFF7C8E8-D76C-4E9A-BA9B-76775DF0EF15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFF7C8E8-D76C-4E9A-BA9B-76775DF0EF15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFF7C8E8-D76C-4E9A-BA9B-76775DF0EF15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CFF478B-3D80-40A2-ACCD-817EDDAAB5DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CFF478B-3D80-40A2-ACCD-817EDDAAB5DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CFF478B-3D80-40A2-ACCD-817EDDAAB5DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CFF478B-3D80-40A2-ACCD-817EDDAAB5DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
